@@ -14,6 +14,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.title="WBToastView"
+        
         // 初始化
         let toast = WBToastView()
         // 设置文本，必填
