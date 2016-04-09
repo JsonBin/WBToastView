@@ -11,8 +11,6 @@ import UIKit
 class WBToastView: UIView {
     
     // 外部接口
-    internal var textString:NSString? // 显示文字(必须调用)
-    // 可调用
     internal var font:CGFloat?  // 字体大小 (默认字体大小为15)
     internal var color:UIColor?  // 背景颜色(默认为黑色，透明度为0.5)
     internal var distance:CGFloat?  // 设置距离顶部或则底部要显示的距离
@@ -20,28 +18,35 @@ class WBToastView: UIView {
     
     // 内部接口
     private let textLabel = UILabel()
-    
+    private var toastWindows = UIWindow()
+    private var textString:NSString?
     // 顶部显示
-    internal func showTop(view:UIView) -> Void{
+    internal func showTop(string:NSString) -> Void{
+        textString=string
+        toastWindows=UIApplication.sharedApplication().keyWindow!
         creatToast()
         let y = distance==nil ? 60 : distance
-        self.frame = CGRectMake(CGRectGetMidX(view.bounds)-getWidth()/2, y!, getWidth(), getHeight())
-        view.addSubview(self)
+        self.frame = CGRectMake(CGRectGetMidX(toastWindows.screen.bounds)-getWidth()/2, y!, getWidth(), getHeight())
+        toastWindows.addSubview(self)
         hiddeToas()
     }
     // 中间显示
-    internal func showCenter(view:UIView) -> Void{
+    internal func showCenter(string:NSString) -> Void{
+        textString=string
+        toastWindows=UIApplication.sharedApplication().keyWindow!
         creatToast()
-        self.center = view.center
-        view.addSubview(self)
+        self.center = toastWindows.center
+        toastWindows.addSubview(self)
         hiddeToas()
     }
     // 底部显示
-    internal func showBottom(view:UIView) -> Void{
+    internal func showBottom(string:NSString) -> Void{
+        textString=string
+        toastWindows=UIApplication.sharedApplication().keyWindow!
         creatToast()
         let y = distance==nil ? 60 : distance
-        self.frame = CGRectMake(CGRectGetMidX(view.bounds)-getWidth()/2, CGRectGetHeight(view.bounds)-getHeight()-y!, getWidth(), getHeight())
-        view.addSubview(self)
+        self.frame = CGRectMake(CGRectGetMidX(toastWindows.screen.bounds)-getWidth()/2, CGRectGetHeight(toastWindows.screen.bounds)-getHeight()-y!, getWidth(), getHeight())
+        toastWindows.addSubview(self)
         hiddeToas()
     }
     
@@ -64,7 +69,7 @@ class WBToastView: UIView {
     
     private func creatToast()->Void{
         // 设置view
-        self.frame = CGRectMake(0, 0, 300, 10)
+        self.frame = CGRectMake(0, 0, toastWindows.screen.bounds.size.width, 10)
         self.layer.cornerRadius = 4
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.whiteColor().CGColor

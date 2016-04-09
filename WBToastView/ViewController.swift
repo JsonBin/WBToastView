@@ -17,9 +17,9 @@ class ViewController: UIViewController {
         // 初始化
         let toast = WBToastView()
         // 设置文本，必填
-        toast.textString = "家里的减肥了卡上就放大看垃圾收电费按时jlasjdklfjadlskjflkasdjfu asdfadsjfosdajflsdajflkasdjflkasdjflkasdjlfkasjdfkljasdkfljadsfasdfasdfasdfadgtetqwetqwetqwetqwetqwtqwtqwtqwetqweqweiujqwejllfjdkfljadsklfjlakdsjfklajdsfkljasdlkfjlkadsjflaskdjfijqwejrjklejasdklfjkdlsafasdfadsasdfadsfasdf"
+        let string = "家里的减肥了卡上就放大看垃圾收电费按时jlasjdklfjadlskjflkasdjfu asdfadsjfosdajflsdajflkasdjflkasdjflkasdjlfkasjdfkljasdkfljadsfasdfasdfasdfadgtetqwetqwetqwetqwetqwtqwtqwtqwetqweqweiujqwejllfjdkfljadsklfjlakdsjfklajdsfkljasdlkfjlkadsjflaskdjfijqwejrjklejasdklfjkdlsafasdfadsasdfadsfasdf"
         
-        // 设置其他属性
+        // 设置其他属性(可不设置)
         toast.font = 17  // 设置字体的大小(默认为15)
         toast.color = UIColor.brownColor() //设置背景颜色(默认为黑色，透明度为0.6)
         toast.disapperTime = 2   // 设置显示的时间(默认为1.5s)
@@ -27,11 +27,11 @@ class ViewController: UIViewController {
         
         
         // 在顶部显示
-        toast.showTop(self.view)
+        toast.showTop(string)
         // 在中间显示
-//        toast.showCenter(self.view)
+//        toast.showCenter(string)
         // 在底部显示
-//        toast.showBottom(self.view)
+//        toast.showBottom(string)
         
         
     }
